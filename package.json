@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Kyle McKell",
   "license": "ISC",
+  "scripts": {
+    "dev": "tsnd --respawn"
+  },
   "devDependencies": {
     "@types/node": "^18.11.10",
     "ts-node-dev": "^2.0.0",

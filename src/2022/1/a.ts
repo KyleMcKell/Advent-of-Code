@@ -1,10 +1,10 @@
-import { getFileData } from "utils";
+import { getFileData } from "../../utils";
 
 const fileData = getFileData("example", __dirname);
 
 const splitFileData = fileData.split("\n");
 
-const arr: number[] = [0];
+const arr = [0];
 
 for (let i = 0; i < splitFileData.length; i++) {
   if (!splitFileData[i]) {
