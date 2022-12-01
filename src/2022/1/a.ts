@@ -1,4 +1,4 @@
-import { getFileData } from "../utils";
+import { getFileData } from "utils";
 
 const fileData = getFileData("example", __dirname);
 
