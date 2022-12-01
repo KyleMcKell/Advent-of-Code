@@ -1,3 +1,5 @@
+export const x = "";
+
 const fileData = await Deno.readTextFile("./input.txt");
 
 const splitFileData = fileData.split("\n");
