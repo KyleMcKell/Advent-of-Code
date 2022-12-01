@@ -1,12 +1,5 @@
-export const chunk = (array: any[], size: number) => {
-  const chunkedArray = [];
-  const timesToLoop = Math.ceil(array.length / size);
+import { getFileData } from "../utils";
 
-  for (let i = 0; i < timesToLoop; i++) {
-    const startingIndex = i * size;
-    const chunk = array.slice(startingIndex, startingIndex + size);
-    chunkedArray.push(chunk);
-  }
+const fileData = getFileData("example", __dirname);
 
-  return chunkedArray;
-};
+console.log(fileData);
