@@ -1,6 +1,6 @@
 import { getFileData } from "../utils";
 
-const fileData = getFileData("example", __dirname);
+const fileData = getFileData("input", __dirname);
 
 const splitFileData = fileData.split("\n");
 
@@ -16,4 +16,7 @@ for (let i = 0; i < splitFileData.length; i++) {
 
 arr.sort((a, b) => b - a);
 
-console.log(arr[0]);
+const threeHighestElves = arr.slice(0, 3);
+const totalCalories = threeHighestElves.reduce((x, y) => x + y);
+
+console.log(totalCalories);
