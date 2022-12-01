@@ -1,6 +1,6 @@
-export const x = "";
+import { getFileData } from "../../utils.ts";
 
-const fileData = await Deno.readTextFile("./input.txt");
+const fileData = await getFileData("example");
 
 const splitFileData = fileData.split("\n");
 
