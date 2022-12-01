@@ -1,6 +1,4 @@
-import { getFileData } from "../../utils";
-
-const fileData = getFileData("example", __dirname);
+const fileData = await Deno.readTextFile("./input.txt");
 
 const splitFileData = fileData.split("\n");
 
