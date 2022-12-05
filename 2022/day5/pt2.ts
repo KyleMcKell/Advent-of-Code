@@ -6,12 +6,12 @@ type direction = {
   receivingStackIndex: number;
 };
 
+// getting file data
 const fileData = await getFileData("input");
-
 const [crane, movesStr] = fileData.split("\n\n");
-
 const moves = movesStr.split("\n");
 
+// making directions easy to work with
 const directions: direction[] = moves.map((move) => {
   const splitMoves = move.split(" ");
   return {
@@ -21,14 +21,16 @@ const directions: direction[] = moves.map((move) => {
   };
 });
 
-const craneAsData = crane.split("\n");
-const numColumns = craneAsData.at(-1)!.split("   ").length;
+// separating crane numbers from boxes, and prep
+const craneData = crane.split("\n");
+const numColumns = craneData.at(-1)!.split("   ").length;
 const stacks: string[][] = Array(numColumns)
   .fill([])
   .map((x) => x.slice(0));
 
-const craneRows = craneAsData.slice(0, craneAsData.length - 1);
+const craneRows = craneData.slice(0, craneData.length - 1);
 
+// making cranes workable
 for (let i = craneRows.length - 1; i >= 0; i--) {
   const craneRow = craneRows[i];
 
@@ -52,6 +54,7 @@ for (let i = craneRows.length - 1; i >= 0; i--) {
   }
 }
 
+// executing the directions
 for (let i = 0; i < directions.length; i++) {
   const { numCratesToMove, transferringStackIndex, receivingStackIndex } = directions[i];
 
@@ -68,6 +71,7 @@ for (let i = 0; i < directions.length; i++) {
   receiveStack.push(...popArr);
 }
 
+// making a string to represent the top of each stack
 const topOfStacks = stacks.reduce((x, y) => x + y.at(-1), "");
 
-console.log(topOfStacks);
+console.log(topOfStacks); // CDTQZHBRS
