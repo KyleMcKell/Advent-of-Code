@@ -27,11 +27,11 @@ for (let i = 0; i < groupedData.length; i++) {
 let pairs = 0;
 for (let i = 0; i < sortedNumberArr.length; i++) {
   const [largerRange, shorterRange] = sortedNumberArr[i];
-  if (largerRange[0] <= shorterRange[0] && shorterRange[0] <= largerRange[1]) {
+  if (largerRange[0] <= shorterRange[0] && largerRange[1] >= shorterRange[0]) {
     pairs++;
   } else if (
     largerRange[1] >= shorterRange[1] &&
-    shorterRange[1] >= largerRange[0]
+    largerRange[0] <= shorterRange[1]
   ) {
     pairs++;
   }
