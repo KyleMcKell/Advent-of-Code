@@ -68,7 +68,6 @@ for (let i = 0; i < directions.length; i++) {
   receiveStack.push(...popArr);
 }
 
-let topOfStacks = "";
-stacks.forEach((stack) => (topOfStacks += stack.at(-1)));
+const topOfStacks = stacks.reduce((x, y) => x + y.at(-1), "");
 
 console.log(topOfStacks);
