@@ -4,6 +4,12 @@ import { findMarker } from "./index.ts"
 
 const fileData = await getFileData("example")
 
+Deno.test("Finds marker in group of 4 with 4", () => {
+  const mock = "asdf"
+  const marker = findMarker(mock, 4)
+  assertStrictEquals(4, marker)
+})
+
 Deno.test("Finds marker with no obstruction", () => {
   const mock = "asdfjkl"
   const marker = findMarker(mock, 4)

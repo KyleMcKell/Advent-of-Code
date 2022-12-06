@@ -1,8 +1,7 @@
 export function findMarker(buffer: string, markerLength: number) {
   const bufferArr = buffer.split("")
-  for (let i = markerLength - 1; i < bufferArr.length; i++) {
-    const sliceStart = i - markerLength >= 0 ? i - markerLength : 0
-    const bufferSet = new Set(bufferArr.slice(sliceStart, i))
+  for (let i = markerLength; i < bufferArr.length + 1; i++) {
+    const bufferSet = new Set(bufferArr.slice(i - markerLength, i))
     if (bufferSet.size === markerLength) {
       return i
     }
