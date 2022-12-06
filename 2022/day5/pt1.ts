@@ -88,12 +88,7 @@ export function executeDirection(direction: Direction, stacks: string[][]) {
 const executedStacks = executeAllDirections(directions, stacks)
 
 export function getTopOfStacks(stacks: string[][]) {
-  let topOfStacks = ""
-  stacks.forEach((stack) => {
-    const finalIndexInStack = stack.at(-1)
-    if (finalIndexInStack) topOfStacks += finalIndexInStack
-  })
-  return topOfStacks
+  return stacks.reduce((x, y) => x + (y.at(-1) ?? ""), "")
 }
 
 const topOfStacks = getTopOfStacks(executedStacks)
