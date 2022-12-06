@@ -1,6 +1,6 @@
 import { assertEquals, assertStrictEquals } from "https://deno.land/std@0.167.0/testing/asserts.ts"
 import { getFileData } from "../../utils.ts"
-import { Direction, executeDirection, formatCrane, formatDirections, getTopOfStacks } from "./pt1.ts"
+import { Direction, executeDirections, executeOneByOneDirection, executeRetainOrder, formatCrane, formatDirections, getTopOfStacks } from "./index.ts"
 
 const fileData = await getFileData("example")
 
@@ -29,15 +29,27 @@ Deno.test("Crane Formatted Correctly", () => {
   assertEquals(crane, expected)
 })
 
-Deno.test("Direction Executes Correctly", () => {
+Deno.test("Direction Executes Correctly One Item At A Time", () => {
   const exampleStacks = [["A"], ["B", "C"], []]
   const exampleDirection: Direction = {
     numCratesToMove: 1,
     transferringStackIndex: 1,
     receivingStackIndex: 2,
   }
-  const move = executeDirection(exampleDirection, exampleStacks)
+  const move = executeOneByOneDirection(exampleDirection, exampleStacks)
   const expected = [["A"], ["B"], ["C"]]
+  assertEquals(move, expected)
+})
+
+Deno.test("Direction Executes Correctly Keeping Order", () => {
+  const exampleStacks = [["A", "B", "C"], ["D"], ["E", "F"]]
+  const exampleDirection: Direction = {
+    numCratesToMove: 2,
+    transferringStackIndex: 0,
+    receivingStackIndex: 1,
+  }
+  const move = executeRetainOrder(exampleDirection, exampleStacks)
+  const expected = [["A"], ["D", "B", "C"], ["E", "F"]]
   assertEquals(move, expected)
 })
 
