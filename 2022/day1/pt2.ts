@@ -1,22 +1,26 @@
-import { getFileData } from "../../utils.ts"
+import { getSplitFileData } from "../../utils.ts"
 
-const fileData = await getFileData("example")
+const fileData = await getSplitFileData("example")
 
-const splitFileData = fileData.split("\n")
+export function highestThreeCalories(data: string[]) {
+  const arr = []
 
-const arr = [0]
-
-for (let i = 0; i < splitFileData.length; i++) {
-  if (!splitFileData[i]) {
-    arr.push(0)
-  } else {
-    arr[arr.length - 1] += parseInt(splitFileData[i])
+  for (let i = 0; i < data.length; i++) {
+    if (!data[i]) {
+      arr.push(0)
+    } else {
+      arr[arr.length - 1] += parseInt(data[i])
+    }
   }
+  console.log(arr)
+
+  arr.sort((a, b) => b - a)
+
+  const threeHighestElves = arr.slice(0, 3)
+  const totalCalories = threeHighestElves.reduce((x, y) => x + y, 0)
+  return totalCalories
 }
 
-arr.sort((a, b) => b - a)
-
-const threeHighestElves = arr.slice(0, 3)
-const totalCalories = threeHighestElves.reduce((x, y) => x + y, 0)
+const totalCalories = highestThreeCalories(fileData)
 
 console.log(totalCalories)
