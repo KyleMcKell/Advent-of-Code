@@ -1,6 +1,6 @@
 import { assertEquals, assertStrictEquals } from "https://deno.land/std@0.167.0/testing/asserts.ts"
 import { getFileData } from "../../utils.ts"
-import { Direction, executeDirections, executeOneByOneDirection, executeRetainOrder, formatCrane, formatDirections, getTopOfStacks } from "./index.ts"
+import { Direction, executeOneByOneDirection, executeRetainOrder, formatCrane, formatDirections, getTopOfStacks } from "./index.ts"
 
 const fileData = await getFileData("example")
 
